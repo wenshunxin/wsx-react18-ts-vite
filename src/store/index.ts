@@ -10,6 +10,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import demoSlice from './modules/demo'
 import recommendSlice from '../views/discover/c-views/recommend/store/recommend'
 import playerSlice from '../views/player/store/player'
+import songsSlice from '../views/discover/c-views/songs/store'
 
 // 这个是将状态存储在本地
 import storage from 'redux-persist/es/storage'
@@ -33,7 +34,8 @@ const persistConfig = {
 const reducer = combineReducers({
   demo: demoSlice,
   recommend: recommendSlice,
-  player: playerSlice
+  player: playerSlice,
+  songs: songsSlice
 })
 /**
  * 解决数据状态不持久化

@@ -36,7 +36,8 @@ export const PlayerWrapper = styled.div`
   .right {
     padding: 20px 40px 40px 30px;
   }
+
   a {
-    color: #0c73c2;
+    color: #0c73c2 !important;
   }
 `
