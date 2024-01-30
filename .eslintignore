@@ -1,0 +1,9 @@
+
+.husky
+node_modules
+public
+.cz-config.cjs
+.commitlintrc.cjs
+
+pnpm-lock.yaml
+package-lock.json
