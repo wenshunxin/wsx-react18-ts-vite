@@ -1,7 +1,20 @@
 import hyRequest from '@/service'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+// import { useAppDispatch } from '@/store'
 export const getCatListApi = () => hyRequest.get({ url: '/playlist/catlist' })
+/**
+ * 获取数据
+ */
+export const getPlaylists = (cat: string, limit: number, offset: number) =>
+  hyRequest.get({
+    url: `/top/playlist?cat=${cat}&limit=${limit}&offset=${offset}`
+  })
+
+export const getPlayDetail = (id: number) =>
+  hyRequest.get({
+    url: '/playlist/detail?id=' + id
+  })
 
 export const fetchGetActListAction = createAsyncThunk(
   'getActList',
@@ -56,12 +69,26 @@ export const fetchGetActListAction = createAsyncThunk(
     dispatch(changeCatListAction(catList))
   }
 )
+interface IProp {
+  cat: string
+  limit: number
+  offset: number
+}
+export const fetchGetPlayListAction = createAsyncThunk<void, IProp>(
+  'playList/fetchGetPlayListAction',
+  async ({ cat, limit, offset }, { dispatch }) => {
+    const res = await getPlaylists(cat, limit, offset)
+    dispatch(changePlaylistsAction(res))
+  }
+)
 
 interface IState {
-  catList: any
+  catList: any[]
+  playlistsData: any
 }
 const initialState: IState = {
-  catList: {}
+  catList: [],
+  playlistsData: {}
 }
 const songsSlice = createSlice({
   name: 'songs',
@@ -69,10 +96,13 @@ const songsSlice = createSlice({
   reducers: {
     changeCatListAction(state, { payload }) {
       state.catList = payload
+    },
+    changePlaylistsAction(state, { payload }) {
+      state.playlistsData = payload
     }
   }
 })
 
-export const { changeCatListAction } = songsSlice.actions
+export const { changeCatListAction, changePlaylistsAction } = songsSlice.actions
 
 export default songsSlice.reducer

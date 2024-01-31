@@ -10,7 +10,6 @@ export default function App() {
   const style: any = {
     '--primary-color': colorPrimary
   }
-  console.log(1)
   return (
     <ConfigProvider
       theme={{

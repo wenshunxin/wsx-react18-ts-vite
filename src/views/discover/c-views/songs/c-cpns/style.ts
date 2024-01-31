@@ -9,6 +9,7 @@ interface IStyle {
 export const PullDownWrap = styled.div<IStyle>`
   top: 43px;
   display: ${(props) => (props.isShowPullDown ? 'block' : 'none')};
+  z-index: 99;
   .top {
     height: 32px;
     background: url(${sltlyr}) no-repeat;
@@ -29,7 +30,6 @@ export const PullDownWrap = styled.div<IStyle>`
     background-repeat: repeat-y;
     background: url(${sltlyr});
     background-position: -720px 0;
-    height: 300px;
     h3 {
       height: 37px;
       padding-left: 26px;
@@ -42,6 +42,9 @@ export const PullDownWrap = styled.div<IStyle>`
         text-align: center;
         line-height: 26px;
       }
+    }
+    & > div > div:last-child {
+      padding-bottom: 25px;
     }
   }
   .ft {

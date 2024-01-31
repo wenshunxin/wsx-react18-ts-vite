@@ -38,4 +38,39 @@ export const SongsWrapper = styled.div`
       color: #fff !important;
     }
   }
+
+  ul.playlists {
+    margin: 30px 0 0 -50px;
+    li {
+      box-sizing: content-box;
+      display: inline-block;
+      width: 139.5px;
+      height: 188px;
+      overflow: hidden;
+      padding: 0 0 30px 50px;
+      line-height: 1.4;
+      .bottom {
+        background-position: 0 -537px;
+        color: #ccc;
+        bottom: 0;
+        i.sprite_icon {
+          width: 14px;
+          height: 11px;
+          background-position: 0 -24px;
+          margin: 9px 5px 9px 10px;
+        }
+        .icon-play {
+          background-position: 0 0;
+          width: 16px;
+          height: 17px;
+          position: absolute;
+          right: 10px;
+          bottom: 5px;
+          &:hover {
+            background-position: 0 -60px;
+          }
+        }
+      }
+    }
+  }
 `
