@@ -1,7 +1,5 @@
 import hyRequest from '@/service'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-
-// import { useAppDispatch } from '@/store'
 export const getCatListApi = () => hyRequest.get({ url: '/playlist/catlist' })
 /**
  * 获取数据
