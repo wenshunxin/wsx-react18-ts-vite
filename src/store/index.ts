@@ -17,6 +17,7 @@ import storage from 'redux-persist/es/storage'
 
 // 导入createFilter函数
 import createFilter from 'redux-persist-transform-filter'
+import AlbumSlice from '../views/discover/c-views/album/store/index'
 // 创建一个全局折叠过滤器，过滤器接收两个参数，player里面的lyrics
 const globalCollapsedFilter = createFilter('player', ['lyrics'])
 // 定义一个persistConfig变量，用于存储持久化配置
@@ -35,7 +36,8 @@ const reducer = combineReducers({
   demo: demoSlice,
   recommend: recommendSlice,
   player: playerSlice,
-  songs: songsSlice
+  songs: songsSlice,
+  album: AlbumSlice
 })
 /**
  * 解决数据状态不持久化

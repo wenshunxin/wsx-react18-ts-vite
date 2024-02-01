@@ -7,3 +7,9 @@ export const AlbumWrapper = styled.div`
   border-bottom: 0;
   padding: 40px;
 `
+
+export const UlWrapper = styled.ul`
+  margin: 30px 0px 0px -33px;
+  display: flex;
+  flex-wrap: wrap;
+`
