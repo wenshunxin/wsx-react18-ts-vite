@@ -56,12 +56,6 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-require-transform": "^1.0.21"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "prettier --write",
