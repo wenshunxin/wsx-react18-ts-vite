@@ -10,23 +10,21 @@ interface IProps {
 }
 
 const AlbumItem: FC<IProps> = (props) => {
-  const { name, picUrl, artist = {} } = props
+  const { name, picUrl, artist = { name: '' } } = props
   return (
     <AlbumItemWrap>
-      <li>
-        <a className="sprite_cover ">
-          <div className="relative w-130px">
-            <img src={getImgUrl(picUrl, 130)} />
-            <a className="sprite_icon"></a>
-          </div>
-        </a>
-        <div>
-          <p className="line-clamp-1">{name}</p>
-          <p>
-            <a className="text-[#666]">{artist?.name}</a>
-          </p>
+      <div className="sprite_cover ">
+        <div className="relative w-130px">
+          <img src={getImgUrl(picUrl, 130)}></img>
+          <a className="sprite_icon"></a>
         </div>
-      </li>
+      </div>
+      <div>
+        <p className="line-clamp-1">{name}</p>
+        <p>
+          <a className="text-[#666]">{artist?.name}</a>
+        </p>
+      </div>
     </AlbumItemWrap>
   )
 }

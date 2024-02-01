@@ -16,7 +16,7 @@ const AlbumHeader: FC<IProps> = (props) => {
         {list.map((item, index) => {
           return (
             <div key={item}>
-              <a>{item}</a>
+              <a href={`#/discover/album?area=${item}`}>{item}</a>
               {index === list?.length - 1 ? null : <span>|</span>}
             </div>
           )
