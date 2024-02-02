@@ -20,6 +20,8 @@ const RecommendSinger = lazy(
 )
 import ResidentSinger from '@/views/discover/c-views/artist/c-cpns/resident-singer'
 import CatSinger from '@/views/discover/c-views/artist/c-cpns/cat-singer'
+import DefaultPage from '@/views/discover/c-views/djradio/c-cpns/default-page'
+import CategoryPage from '@/views/discover/c-views/djradio/c-cpns/category-page'
 
 const routes: RouteObject[] = [
   {
@@ -44,7 +46,11 @@ const routes: RouteObject[] = [
       },
       {
         path: 'djradio',
-        element: <Djradio />
+        element: <Djradio />,
+        children: [
+          { path: '', element: <DefaultPage /> },
+          { path: 'category', element: <CategoryPage /> }
+        ]
       },
       {
         path: 'album',

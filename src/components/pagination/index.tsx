@@ -4,7 +4,7 @@ import { Pagination } from 'antd'
 import { PaginationWrapper } from './style'
 
 export default memo(function HYPagination(props: any) {
-  const { currentPage, total, onPageChange } = props
+  const { currentPage, total, onPageChange, pageSize = 35 } = props
 
   // render function
   function itemRender(_current: number, type: string, originalElement: any) {
@@ -25,7 +25,7 @@ export default memo(function HYPagination(props: any) {
         current={currentPage}
         defaultCurrent={1}
         total={total}
-        pageSize={35}
+        pageSize={pageSize}
         showSizeChanger={false}
         itemRender={itemRender}
         onChange={onPageChange}
