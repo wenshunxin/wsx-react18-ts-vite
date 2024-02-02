@@ -15,6 +15,12 @@ const Artist = lazy(() => import('@/views/discover/c-views/artist'))
 const Ranking = lazy(() => import('@/views/discover/c-views/ranking'))
 const PlayerSong = lazy(() => import('@/views/player/player-detail'))
 
+const RecommendSinger = lazy(
+  () => import('@/views/discover/c-views/artist/c-cpns/recommended-singer')
+)
+import ResidentSinger from '@/views/discover/c-views/artist/c-cpns/resident-singer'
+import CatSinger from '@/views/discover/c-views/artist/c-cpns/cat-singer'
+
 const routes: RouteObject[] = [
   {
     path: '/',
@@ -46,7 +52,21 @@ const routes: RouteObject[] = [
       },
       {
         path: 'artist',
-        element: <Artist />
+        element: <Artist />,
+        children: [
+          {
+            path: '',
+            element: <RecommendSinger />
+          },
+          {
+            path: 'signed',
+            element: <ResidentSinger />
+          },
+          {
+            path: 'cat',
+            element: <CatSinger />
+          }
+        ]
       },
       {
         path: 'ranking',
