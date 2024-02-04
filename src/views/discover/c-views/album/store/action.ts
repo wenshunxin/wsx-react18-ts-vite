@@ -24,7 +24,6 @@ export const fetchGetAlbumListAreaAction = createAsyncThunk<void, IAparam>(
   'albumListArea',
   async (data, { dispatch }) => {
     const res = await albumListAreaApi({ ...data })
-    console.log(res)
     const { albums, total } = res
     dispatch(changeAlbumListAreaAction({ albums, total }))
   }

@@ -10,7 +10,7 @@ interface IProps {
 
 const AlbumNewest: FC<IProps> = () => {
   const dispatch = useAppDispatch()
-  const { albumNewestList } = useAppSelector(
+  const { albumNewestList = [] } = useAppSelector(
     (state) => state.album,
     shallowEqualApp
   )
