@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import type { ReactNode, FC } from 'react'
 interface IProps {
-  title: string
+  title: any
   children?: ReactNode
 }
 

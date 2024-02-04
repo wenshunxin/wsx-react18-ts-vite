@@ -22,6 +22,7 @@ import ArtistSlice from '../views/discover/c-views/artist/store/index'
 import DjSlice from '@/views/discover/c-views/djradio/store'
 // 创建一个全局折叠过滤器，过滤器接收两个参数，player里面的lyrics
 const globalCollapsedFilter = createFilter('player', ['lyrics'])
+const djCollapsedFilter = createFilter('dj', ['djCateList'])
 // 定义一个persistConfig变量，用于存储持久化配置
 const persistConfig = {
   // 持久化存储的key
@@ -29,9 +30,9 @@ const persistConfig = {
   // 持久化存储的类型
   storage,
   // 持久化存储的过滤器
-  whitelist: ['player'],
+  whitelist: ['player', 'dj'],
   // 持久化存储的转换器
-  transform: [globalCollapsedFilter]
+  transform: [globalCollapsedFilter, djCollapsedFilter]
 }
 
 const reducer = combineReducers({
