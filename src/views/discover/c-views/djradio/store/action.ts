@@ -6,7 +6,8 @@ import {
   changeGetDjRecommendAction,
   changeGetDjHotAction,
   changeGetDjRecommendProgramListAction,
-  changeGetDjTopListAction
+  changeGetDjTopListAction,
+  changeGetDjDefaultRecommendAction
 } from '.'
 export const getDjCateListApi = () => hyRequest.get({ url: '/dj/catelist' })
 
@@ -68,5 +69,19 @@ export const fetchGetDjTopListAction = createAsyncThunk<void, number>(
   async (limit, { dispatch }) => {
     const res = await getDjTopListApi(limit)
     dispatch(changeGetDjTopListAction(res.toplist))
+  }
+)
+
+/**
+ * default页面 推荐电台
+ */
+export const getDefaultRecommendDjApi = () =>
+  hyRequest.get({ url: '/dj/category/recommend' })
+
+export const fetchGetDefaultRecommendDjAction = createAsyncThunk<void, void>(
+  'defaultRecommendDj',
+  async (_, { dispatch }) => {
+    const res = await getDefaultRecommendDjApi()
+    dispatch(changeGetDjDefaultRecommendAction(res.data))
   }
 )

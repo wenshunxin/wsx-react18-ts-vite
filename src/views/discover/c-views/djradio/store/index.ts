@@ -7,6 +7,7 @@ interface IState {
   djHotTotal: number
   djRecommendProgramList: any[] // 推荐节目
   djTopList: any[] // 排行榜
+  djDefaultRecommend: any[] // 默认推荐
 }
 const initialState: IState = {
   djCateList: [], // 电台分类列表
@@ -14,7 +15,8 @@ const initialState: IState = {
   djHot: [],
   djHotTotal: 0,
   djRecommendProgramList: [],
-  djTopList: []
+  djTopList: [],
+  djDefaultRecommend: []
 }
 export const DjSlice = createSlice({
   name: 'DjSlice',
@@ -35,6 +37,9 @@ export const DjSlice = createSlice({
     },
     changeGetDjTopListAction(state, { payload }) {
       state.djTopList = payload
+    },
+    changeGetDjDefaultRecommendAction(state, { payload }) {
+      state.djDefaultRecommend = payload
     }
   }
 })
@@ -44,7 +49,8 @@ export const {
   changeGetDjRecommendAction,
   changeGetDjHotAction,
   changeGetDjRecommendProgramListAction,
-  changeGetDjTopListAction
+  changeGetDjTopListAction,
+  changeGetDjDefaultRecommendAction
 } = DjSlice.actions
 
 export default DjSlice.reducer
