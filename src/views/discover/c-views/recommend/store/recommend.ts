@@ -36,13 +36,15 @@ interface IState {
   topList: any[]
   topListSongs: any[]
   playlist: any
+  threePlaylist: any[]
 }
 
 const initialState: IState = {
   banners: [],
   topList: [],
   topListSongs: [],
-  playlist: {}
+  playlist: {},
+  threePlaylist: []
 }
 const recommendSlice = createSlice({
   name: 'recommend',
@@ -59,6 +61,9 @@ const recommendSlice = createSlice({
     },
     getPlaylistAction(state, { payload }) {
       state.playlist = payload
+    },
+    changeGetThreePlaylistAction(state, { payload }) {
+      state.threePlaylist = payload
     }
   }
 })
@@ -66,7 +71,8 @@ export const {
   getBannerAction,
   getTopListAction,
   getTopListSongsAction,
-  getPlaylistAction
+  getPlaylistAction,
+  changeGetThreePlaylistAction
 } = recommendSlice.actions
 
 export default recommendSlice.reducer
