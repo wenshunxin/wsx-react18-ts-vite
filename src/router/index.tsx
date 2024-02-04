@@ -23,7 +23,7 @@ import CatSinger from '@/views/discover/c-views/artist/c-cpns/cat-singer'
 import DefaultPage from '@/views/discover/c-views/djradio/c-cpns/default-page'
 import CategoryPage from '@/views/discover/c-views/djradio/c-cpns/category-page'
 import RecommendedProgram from '@/views/discover/c-views/djradio/c-cpns/recommended-program'
-import RankProgram from '@/views/discover/c-views/djradio/c-cpns/rank-program/inddex'
+import RankProgram from '@/views/discover/c-views/djradio/c-cpns/rank-program'
 
 const routes: RouteObject[] = [
   {

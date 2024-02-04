@@ -21,15 +21,13 @@ const RecommendedProgram: FC<IProps> = () => {
   }, [])
   const title = (
     <div>
-      推荐节目{' '}
+      推荐节目
       <span className="text-[12px] text-[#999] ml-13px">(每日更新)</span>
     </div>
   )
   return (
     <RecommendWrapper className="wrap-v2">
-      <DjTitle title={title}>
-        <a href={'#/discover/djradio/recommend'}>更多</a>
-      </DjTitle>
+      <DjTitle title={title}></DjTitle>
       <div className="border-1 border-color-[#e2e2e2] border-t-0">
         {djRecommendProgramList.map((item, index) => {
           return (

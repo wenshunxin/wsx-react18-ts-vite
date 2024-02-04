@@ -11,7 +11,10 @@ interface IProps {
 
 const Rank: FC<IProps> = () => {
   const dispatch = useAppDispatch()
-  const { djTopList } = useAppSelector((state) => state.dj, shallowEqualApp)
+  const { djTopList = [] } = useAppSelector(
+    (state) => state.dj,
+    shallowEqualApp
+  )
 
   useEffect(() => {
     dispatch(fetchGetDjTopListAction(10))
