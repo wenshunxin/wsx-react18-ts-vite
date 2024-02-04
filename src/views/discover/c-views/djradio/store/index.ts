@@ -5,12 +5,16 @@ interface IState {
   djRecommend: any[] // 推荐电台
   djHot: any[] // 热门电台
   djHotTotal: number
+  djRecommendProgramList: any[] // 推荐节目
+  djTopList: any[] // 排行榜
 }
 const initialState: IState = {
   djCateList: [], // 电台分类列表
   djRecommend: [],
   djHot: [],
-  djHotTotal: 0
+  djHotTotal: 0,
+  djRecommendProgramList: [],
+  djTopList: []
 }
 export const DjSlice = createSlice({
   name: 'DjSlice',
@@ -25,6 +29,12 @@ export const DjSlice = createSlice({
     changeGetDjHotAction(state, { payload }) {
       state.djHot = payload.djRadios
       state.djHotTotal = payload.total
+    },
+    changeGetDjRecommendProgramListAction(state, { payload }) {
+      state.djRecommendProgramList = payload
+    },
+    changeGetDjTopListAction(state, { payload }) {
+      state.djTopList = payload
     }
   }
 })
@@ -32,7 +42,9 @@ export const DjSlice = createSlice({
 export const {
   changeGetDjCateListAction,
   changeGetDjRecommendAction,
-  changeGetDjHotAction
+  changeGetDjHotAction,
+  changeGetDjRecommendProgramListAction,
+  changeGetDjTopListAction
 } = DjSlice.actions
 
 export default DjSlice.reducer

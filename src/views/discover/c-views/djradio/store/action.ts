@@ -4,7 +4,9 @@ import qs from 'qs'
 import {
   changeGetDjCateListAction,
   changeGetDjRecommendAction,
-  changeGetDjHotAction
+  changeGetDjHotAction,
+  changeGetDjRecommendProgramListAction,
+  changeGetDjTopListAction
 } from '.'
 export const getDjCateListApi = () => hyRequest.get({ url: '/dj/catelist' })
 
@@ -40,5 +42,31 @@ export const fetchGetDjHotAction = createAsyncThunk<void, any>(
   async (params, { dispatch }) => {
     const res = await getDjHotApi(params)
     dispatch(changeGetDjHotAction({ djRadios: res.djRadios, total: res.count }))
+  }
+)
+
+/**
+ * 热门带台
+ */
+export const getDjRecommendProgramApi = (limit: number) =>
+  hyRequest.get({ url: '/program/recommend?limit=' + limit })
+export const fetchGetDjRecommendProgramAction = createAsyncThunk<void, number>(
+  'djRecommend',
+  async (limit, { dispatch }) => {
+    const res = await getDjRecommendProgramApi(limit)
+    dispatch(changeGetDjRecommendProgramListAction(res.programs))
+  }
+)
+/**
+ * 节目排行榜
+ */
+export const getDjTopListApi = (limit: number) =>
+  hyRequest.get({ url: `/dj/program/toplist?limit=${limit}` })
+
+export const fetchGetDjTopListAction = createAsyncThunk<void, number>(
+  'djTopList',
+  async (limit, { dispatch }) => {
+    const res = await getDjTopListApi(limit)
+    dispatch(changeGetDjTopListAction(res.toplist))
   }
 )
