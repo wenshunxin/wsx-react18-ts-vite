@@ -45,8 +45,27 @@ const HotRecommend: FC<IProps> = () => {
         {hotRecommendList.map((item, index) => {
           return (
             <li key={index} className="pl-42px w-140px h-204px box-content">
-              <div>
+              <div className="relative w-140px h-140px">
                 <img src={getImgUrl(item.picUrl, 140)} />
+                <div
+                  className="absolute bottom-0px h-27px bottom sprite_cover w-full flex items-center"
+                  style={{
+                    backgroundPosition: '0px -537px',
+                    color: 'rgb(204, 204, 204)'
+                  }}
+                >
+                  <i
+                    className="sprite_icon"
+                    style={{
+                      width: '14px',
+                      height: '11px',
+                      backgroundPosition: '0px -24px',
+                      margin: '9px 5px 9px 10px'
+                    }}
+                  ></i>
+                  <span>{(item.playCount / 10000).toFixed(0)}万</span>
+                  <a className="icon-play sprite_icon"></a>
+                </div>
               </div>
               <p className="mt-8px mb-3px text-[14px]">
                 <a className="leading-20px">{item.name}</a>
