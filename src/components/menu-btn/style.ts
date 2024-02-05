@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const MenuBtnWrapper = styled.div`
   cursor: pointer;
+  height: 31px;
   .u-btn2-2 {
     background-position: right -428px;
     width: 85px;
@@ -32,7 +33,6 @@ export const MenuBtnWrapper = styled.div`
     padding-right: 5px;
     i {
       padding: 0 7px 0 30px;
-      loat: left;
       display: inline-block;
       height: 31px;
       line-height: 30px;

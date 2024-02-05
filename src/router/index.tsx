@@ -24,6 +24,8 @@ import DefaultPage from '@/views/discover/c-views/djradio/c-cpns/default-page'
 import CategoryPage from '@/views/discover/c-views/djradio/c-cpns/category-page'
 import RecommendedProgram from '@/views/discover/c-views/djradio/c-cpns/recommended-program'
 import RankProgram from '@/views/discover/c-views/djradio/c-cpns/rank-program'
+import Playlist from '@/views/playlist'
+import DefaultRouter from '@/components/DefaultRouter'
 
 const routes: RouteObject[] = [
   {
@@ -31,63 +33,75 @@ const routes: RouteObject[] = [
     element: <Navigate to="/discover"></Navigate>
   },
   {
-    path: '/discover',
+    path: '/',
     element: <Discover />,
     children: [
       {
-        path: '/discover',
-        element: <Navigate to="/discover/recommend"></Navigate>
-      },
-      {
-        path: 'recommend',
-        element: <Recommend />
-      },
-      {
-        path: 'songs',
-        element: <Songs />
-      },
-      {
-        path: 'djradio',
-        element: <Djradio />,
-        children: [
-          { path: '', element: <DefaultPage /> },
-          { path: 'category', element: <CategoryPage /> }
-        ]
-      },
-      { path: 'djRadio/recommend', element: <RecommendedProgram /> },
-      { path: 'djRadio/rank', element: <RankProgram /> },
-      {
-        path: 'album',
-        element: <Album />
-      },
-      {
-        path: 'artist',
-        element: <Artist />,
+        path: 'discover',
+        element: <DefaultRouter />,
         children: [
           {
             path: '',
-            element: <RecommendSinger />
+            element: <Navigate to={'/discover/recommend'}></Navigate>
           },
           {
-            path: 'signed',
-            element: <ResidentSinger />
+            path: 'recommend',
+            element: <Recommend />
           },
           {
-            path: 'cat',
-            element: <CatSinger />
+            path: 'songs',
+            element: <Songs />
+          },
+          {
+            path: 'djradio',
+            element: <Djradio />,
+            children: [
+              { path: '', element: <DefaultPage /> },
+              { path: 'category', element: <CategoryPage /> }
+            ]
+          },
+          { path: 'djRadio/recommend', element: <RecommendedProgram /> },
+          { path: 'djRadio/rank', element: <RankProgram /> },
+          {
+            path: 'album',
+            element: <Album />
+          },
+          {
+            path: 'artist',
+            element: <Artist />,
+            children: [
+              {
+                path: '',
+                element: <RecommendSinger />
+              },
+              {
+                path: 'signed',
+                element: <ResidentSinger />
+              },
+              {
+                path: 'cat',
+                element: <CatSinger />
+              }
+            ]
+          },
+          {
+            path: 'ranking',
+            element: <Ranking />
+          },
+          {
+            path: 'player',
+            element: <PlayerSong />
           }
         ]
       },
+
       {
-        path: 'ranking',
-        element: <Ranking />
-      },
-      {
-        path: 'player',
-        element: <PlayerSong />
+        path: 'playlist',
+        element: <Playlist />
       }
     ]
   },
+
   {
     path: '/mine',
     element: <Mine />
