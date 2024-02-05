@@ -69,7 +69,7 @@ const Ranking: FC<IProps> = () => {
         return (
           <div className="flex items-center">
             <PlayBtn id={record.id} fee={record.fee}></PlayBtn>
-            <span>{text}</span>
+            <a href={`#/discover/player?id=${record.id}`}>{text}</a>
           </div>
         )
       }
