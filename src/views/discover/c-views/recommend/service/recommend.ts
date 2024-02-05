@@ -17,3 +17,9 @@ export function getTopListDetail(id: number) {
     url: `/playlist/detail?id=${id}`
   })
 }
+
+export function getHotRecommendApi(limit: number) {
+  return hyRequest.get({
+    url: `/personalized?limit=${limit}`
+  })
+}
