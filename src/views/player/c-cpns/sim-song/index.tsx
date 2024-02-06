@@ -9,7 +9,7 @@ interface IProps {
 
 const SimSong: FC<IProps> = () => {
   const {
-    simSong,
+    simSong = [],
     currentSong = {},
     isPlaying
   } = useAppSelector((state) => state.player, shallowEqualApp)

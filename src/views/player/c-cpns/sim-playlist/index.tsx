@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const SimPlaylist: FC<IProps> = () => {
-  const { simPlaylist } = useAppSelector(
+  const { simPlaylist = [] } = useAppSelector(
     (state) => state.player,
     shallowEqualApp
   )

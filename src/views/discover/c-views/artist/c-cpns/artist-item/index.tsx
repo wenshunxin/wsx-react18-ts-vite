@@ -5,12 +5,13 @@ import { getImgUrl } from '@/utils'
 interface IProps {
   picUrl: string
   name: string
+  id: number | string // 歌手id
   className: string
   children?: ReactNode
 }
 
 const ArtistItem: FC<IProps> = (props) => {
-  const { picUrl, name, className } = props
+  const { picUrl, name, className, id } = props
   return (
     <LiWrapper className={`w-130px h-154px ${className}`}>
       {className != 'smi' && (
@@ -19,7 +20,7 @@ const ArtistItem: FC<IProps> = (props) => {
         </div>
       )}
       <p className="mt-8px">
-        <a>
+        <a href={`#/artist?id=${id}`}>
           {name}
           <i className="sprite_icon2"></i>
         </a>

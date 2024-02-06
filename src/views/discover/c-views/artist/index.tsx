@@ -8,7 +8,7 @@ interface IProps {
   children?: ReactNode
 }
 
-const Artist: FC<IProps> = () => {
+const DiscoverArtist: FC<IProps> = () => {
   return (
     <ArtistWrapper className="wrap-v2 flex">
       <div className="left h_full">
@@ -20,4 +20,4 @@ const Artist: FC<IProps> = () => {
     </ArtistWrapper>
   )
 }
-export default memo(Artist)
+export default memo(DiscoverArtist)
