@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
-import { ConfigProvider, Watermark, theme } from 'antd'
+import { ConfigProvider, Spin, Watermark, theme } from 'antd'
 import routes from './router'
 import AppHeader from './components/app-header'
 import AppFooter from './components/app-footer'
@@ -22,7 +22,7 @@ export default function App() {
         style={style}
       >
         <AppHeader />
-        <Suspense fallback="">
+        <Suspense fallback={<Spin></Spin>}>
           <Watermark content="网易云音乐" className="flex-1">
             <div className="main flex-1">{useRoutes(routes)}</div>
           </Watermark>

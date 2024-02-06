@@ -15,3 +15,10 @@ export const fetchGetPlaylistDetailAction = createAsyncThunk<void, number>(
     dispatch(changeGetPlaylistDetail(res.playlist))
   }
 )
+
+/**
+ * 相关推荐 /related/playlist?
+ */
+export const getRelatedPlaylistApi = (id: number) => {
+  return hyRequest.get({ url: `/related/playlist?id=${id}` })
+}

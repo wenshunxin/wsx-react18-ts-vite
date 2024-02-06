@@ -5,5 +5,12 @@ export default {
       lg: '10'
     }
   },
+  theme: {
+    extend: {
+      transformOrigin: {
+        0: '0'
+      }
+    }
+  },
   plugins: [require('windicss/plugin/line-clamp')]
 }

@@ -18,7 +18,8 @@ import {
   changeLyricIndexAction,
   changePlayModeAction,
   changeShowPlayMenuAction,
-  changeMusicAction
+  changeMusicAction,
+  changeSetPlayingAction
 } from '../store'
 
 interface IProps {
@@ -34,10 +35,11 @@ const AppPlayerBar: FC<IProps> = () => {
     lyricIndex,
     playMode,
     playSongList,
-    showPlayMenu
+    showPlayMenu,
+    isPlaying
   } = useAppSelector((state) => state.player, shallowEqualApp)
 
-  const [isPlaying, setIsPlaying] = useState(false)
+  // const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
@@ -68,11 +70,13 @@ const AppPlayerBar: FC<IProps> = () => {
     audioRef
       .current!.play()
       .then(() => {
-        setIsPlaying(true)
+        // setIsPlaying(true)
+        dispatch(changeSetPlayingAction(true))
         console.log('播放成功!')
       })
       .catch(() => {
-        setIsPlaying(false)
+        // setIsPlaying(false)
+        dispatch(changeSetPlayingAction(false))
         console.log('播放失败!')
       })
 
@@ -119,8 +123,10 @@ const AppPlayerBar: FC<IProps> = () => {
   function handlePlayBtnClick() {
     isPlaying
       ? audioRef.current?.pause()
-      : audioRef.current?.play().catch(() => setIsPlaying(false))
-    setIsPlaying(!isPlaying)
+      : audioRef.current
+          ?.play()
+          .catch(() => dispatch(changeSetPlayingAction(false)))
+    dispatch(changeSetPlayingAction(!isPlaying))
   }
 
   function handleChangeMusic(isNext = true) {
@@ -137,11 +143,13 @@ const AppPlayerBar: FC<IProps> = () => {
     audioRef
       .current!.play()
       .then(() => {
-        setIsPlaying(true)
+        // setIsPlaying(true)
+        dispatch(changeSetPlayingAction(true))
         console.log('播放成功!')
       })
       .catch(() => {
-        setIsPlaying(false)
+        // setIsPlaying(false)
+        dispatch(changeSetPlayingAction(false))
         console.log('播放失败!')
       })
   }

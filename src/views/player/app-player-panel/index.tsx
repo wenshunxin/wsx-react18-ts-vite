@@ -2,7 +2,11 @@ import { memo, useRef, useEffect } from 'react'
 import type { ReactNode, FC } from 'react'
 import { PlayMenuWrapper } from './style'
 import { shallowEqualApp, useAppDispatch, useAppSelector } from '@/store'
-import { fetchCurrentSongsAction, changeShowPlayMenuAction } from '../store'
+import {
+  fetchCurrentSongsAction,
+  changeShowPlayMenuAction,
+  changePlaySongListAction
+} from '../store'
 import dayjs from 'dayjs'
 import { scrollTo } from '@/utils/parse-lyric'
 interface IProps {
@@ -10,8 +14,13 @@ interface IProps {
 }
 
 const AppPlayPanel: FC<IProps> = () => {
-  const { playSongList, currentSong, showPlayMenu, lyrics, lyricIndex } =
-    useAppSelector((state) => state.player, shallowEqualApp)
+  const {
+    playSongList,
+    currentSong = {},
+    showPlayMenu,
+    lyrics,
+    lyricIndex
+  } = useAppSelector((state) => state.player, shallowEqualApp)
 
   const lyricRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -20,6 +29,11 @@ const AppPlayPanel: FC<IProps> = () => {
   }, [lyricIndex, showPlayMenu])
 
   const dispatch = useAppDispatch()
+
+  function handleClearPlaylist() {
+    console.log('清空')
+    dispatch(changePlaySongListAction([]))
+  }
   return (
     <div>
       {showPlayMenu && (
@@ -34,12 +48,14 @@ const AppPlayPanel: FC<IProps> = () => {
                   className="sprite_playlist block w-13px  h-13px"
                   style={{ backgroundPosition: '-51px 0' }}
                 ></span>
-                <span className="ml-4px">清空</span>
+                <span className="ml-4px" onClick={handleClearPlaylist}>
+                  清空
+                </span>
               </div>
             </div>
             <div className="flex flex-1 items-center">
               <h2 className="text-[14px] flex-1 font-bold text-center">
-                {currentSong.name}
+                {currentSong?.name}
               </h2>
               <div
                 className="sprite_playlist w-30px h-30px mr-20px"

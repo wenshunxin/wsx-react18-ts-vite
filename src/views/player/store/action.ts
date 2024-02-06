@@ -14,12 +14,39 @@ import {
   changeLyricIndexAction,
   changeSongDetailAction,
   changeSimPlaylistAction,
-  changeSimSongAction
+  changeSimSongAction,
+  changeSetPlayingAction,
+  changeDetailPageLyricAction,
+  changeDetailPageDetailAction
 } from './player'
 import { parseLyrics } from '@/utils/parse-lyric'
 import { IRootState } from '@/store'
+import { message } from 'antd'
+
 /**
- * 获取歌词相关信息
+ * 获取当前歌曲详情页面歌曲的歌词相关信息
+ */
+export const fetchDetailPageLyricAction = createAsyncThunk(
+  'currentSongLyric',
+  async (id: number, { dispatch }) => {
+    const lyric = await getSongLyric(id)
+    const lyricStr = lyric?.lrc?.lyric
+    dispatch(changeDetailPageLyricAction(parseLyrics(lyricStr)))
+  }
+)
+export const fetchDetailPageSongDetailAction = createAsyncThunk(
+  'detailPageSongDetail',
+  async (id: number, { dispatch }) => {
+    const res = await getSongDetail(id)
+    if (res.songs.length) {
+      const song = res.songs[0]
+      dispatch(changeDetailPageDetailAction(song))
+    }
+  }
+)
+
+/**
+ * 获取当前播放歌曲的歌词相关信息
  */
 export const fetchCurrentSongLyric = createAsyncThunk(
   'currentSongLyric',
@@ -53,6 +80,14 @@ export const changeMusicAction = createAsyncThunk<
 >('changeMusic', async (isNext, { getState, dispatch }) => {
   /** 获取新歌曲的索引 */
   const playSongList = getState().player.playSongList
+  if (playSongList.length === 0) {
+    message.open({
+      content: '当前播放列表为空'
+    })
+    dispatch(changeSetPlayingAction(false))
+    dispatch(changePlaySongIndexAction(-1))
+    return
+  }
   const playMode = getState().player.playMode
   const playSongIndex = getState().player.playSongIndex
 

@@ -12,6 +12,10 @@ interface IPlayerState {
   songDetail: any
   simPlaylist: any[]
   simSong: any[]
+  isPlaying: boolean
+
+  detailPageLyric: ILyrics[] // 歌曲页面详情
+  detailPageDetail: any // 歌曲页面详情
 }
 
 const initialState: IPlayerState = {
@@ -24,7 +28,12 @@ const initialState: IPlayerState = {
   showPlayMenu: false,
   songDetail: {},
   simPlaylist: [],
-  simSong: []
+  simSong: [],
+
+  detailPageLyric: [],
+  detailPageDetail: {},
+
+  isPlaying: false // 是否正在播放 true 播放
 }
 
 const playerSlice = createSlice({
@@ -61,6 +70,15 @@ const playerSlice = createSlice({
     },
     changeSimSongAction(state, { payload }) {
       state.simSong = payload
+    },
+    changeSetPlayingAction(state, { payload }) {
+      state.isPlaying = payload
+    },
+    changeDetailPageLyricAction(state, { payload }) {
+      state.detailPageLyric = payload
+    },
+    changeDetailPageDetailAction(state, { payload }) {
+      state.detailPageDetail = payload
     }
   }
 })
@@ -76,7 +94,10 @@ export const {
   changeShowPlayMenuAction,
   changeSongDetailAction,
   changeSimPlaylistAction,
-  changeSimSongAction
+  changeSimSongAction,
+  changeSetPlayingAction,
+  changeDetailPageLyricAction,
+  changeDetailPageDetailAction
 } = playerSlice.actions
 
 export default playerSlice.reducer

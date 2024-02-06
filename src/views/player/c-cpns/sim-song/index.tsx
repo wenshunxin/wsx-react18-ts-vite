@@ -2,12 +2,17 @@ import { shallowEqualApp, useAppDispatch, useAppSelector } from '@/store'
 import { memo } from 'react'
 import type { ReactNode, FC } from 'react'
 import { fetchCurrentSongsAction } from '../../store'
+import Playing from '@/components/playing'
 interface IProps {
   children?: ReactNode
 }
 
 const SimSong: FC<IProps> = () => {
-  const { simSong } = useAppSelector((state) => state.player, shallowEqualApp)
+  const {
+    simSong,
+    currentSong = {},
+    isPlaying
+  } = useAppSelector((state) => state.player, shallowEqualApp)
   const dispatch = useAppDispatch()
   // 处理播放函数
   function handlePlay(record: any) {
@@ -32,14 +37,18 @@ const SimSong: FC<IProps> = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <i
-                    className="sprite_icon3 w-10px h-11px cursor-pointer"
-                    title="播放"
-                    style={{
-                      backgroundPosition: '-69px -455px'
-                    }}
-                    onClick={() => handlePlay(item)}
-                  ></i>
+                  {isPlaying && currentSong.id === item.id ? (
+                    <Playing />
+                  ) : (
+                    <i
+                      className="sprite_icon3 w-10px h-11px cursor-pointer"
+                      title="播放"
+                      style={{
+                        backgroundPosition: '-69px -455px'
+                      }}
+                      onClick={() => handlePlay(item)}
+                    ></i>
+                  )}
                   <i
                     className="sprite_icon3 w-10px h-11px cursor-pointer ml-16px"
                     title="添加到列表"

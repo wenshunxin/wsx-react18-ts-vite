@@ -6,11 +6,12 @@ import dayjs from 'dayjs'
 import Buttons from '@/components/buttons'
 interface IProps {
   detail: any
+  tracks: any[]
   children?: ReactNode
 }
 
 const MainHeader: FC<IProps> = (props) => {
-  const { detail: d } = props
+  const { detail: d, tracks } = props
   return (
     <MainWrapper>
       <div className="w-208px h-208px u-cover sprite_cover flex items-center justify-center">
@@ -41,6 +42,7 @@ const MainHeader: FC<IProps> = (props) => {
           subscribedCount={d.subscribedCount}
           shareCount={d.shareCount}
           commentCount={d.commentCount}
+          tracks={tracks}
         />
         <p className="mt-25px leading-18px text-[#666]">
           介绍：{d.description}

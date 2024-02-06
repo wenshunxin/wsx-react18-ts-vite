@@ -21,9 +21,13 @@ const SimPlaylist: FC<IProps> = () => {
           <div key={item.name} className="flex mb-15px">
             <img src={getImgUrl(item.coverImgUrl, 50)} />
             <div className="ml-10px flex-1 overflow-hidden py-4px flex flex-col justify-between">
-              <div className="truncate text-[14px] text-[#000]">
+              <a
+                href={`#/playlist?id=${item.id}`}
+                className="truncate text-[14px]"
+                style={{ color: '#000 !important' }}
+              >
                 {item.name}
-              </div>
+              </a>
               <div className="text-[#666]">by {item?.creator?.nickname}</div>
             </div>
           </div>

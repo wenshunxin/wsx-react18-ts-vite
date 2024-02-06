@@ -4,7 +4,8 @@ import type { ReactNode, FC } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { PlayerWrapper } from './style'
 import {
-  fetchCurrentSongDetailAction,
+  fetchDetailPageLyricAction,
+  fetchDetailPageSongDetailAction,
   fetchSimPlaylistAction,
   fetchSimSongAction
 } from '@/views/player/store'
@@ -17,28 +18,29 @@ interface IProps {
 
 const PlayerSong: FC<IProps> = () => {
   // 获取路由参数
-  const { currentSong, lyrics, songDetail, lyricIndex } = useAppSelector(
-    (state) => state.player,
-    shallowEqualApp
-  )
-  const [searchParams, setSearchParams] = useSearchParams()
+  const { currentSong, detailPageDetail, lyricIndex, detailPageLyric } =
+    useAppSelector((state) => state.player, shallowEqualApp)
+  const [searchParams] = useSearchParams()
   const id = searchParams.get('id')
-
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    currentSong?.id && setSearchParams({ id: currentSong?.id })
-    id && dispatch(fetchCurrentSongDetailAction(~~id))
     id && dispatch(fetchSimPlaylistAction(~~id))
     id && dispatch(fetchSimSongAction(~~id))
-  }, [currentSong])
+
+    id && dispatch(fetchDetailPageSongDetailAction(~~id))
+    id && dispatch(fetchDetailPageLyricAction(~~id))
+
+    console.log(detailPageDetail)
+  }, [id])
+
   return (
     <PlayerWrapper className="wrap-v2  flex">
       <div className="w-710px left flex justify-between">
         <div className="cvr-wrap">
           <div className="sprite_cover u-cover-6  flex items-center justify-center">
             <img
-              src={getImgUrl(songDetail?.songs?.[0]?.al?.picUrl, 130)}
+              src={getImgUrl(detailPageDetail?.al?.picUrl, 130)}
               alt="图片"
             />
           </div>
@@ -65,23 +67,23 @@ const PlayerSong: FC<IProps> = () => {
           <div className="flex items-center">
             <i className="u-icn-37 sprite_icon2"></i>
             <span className="tit text-[24px] font-normal ml-7px">
-              {songDetail?.songs?.[0]?.name}
+              {detailPageDetail.name}
             </span>
           </div>
           <div className="flex items-center mt-10px mb-10px">
             <i>歌手：</i>
-            <a>{songDetail?.songs?.[0]?.ar[0].name}</a>
+            <a>{detailPageDetail.ar?.[0].name}</a>
           </div>
           <div className="flex items-center mb-10px">
             <i>所属专辑：</i>
-            <a>{songDetail?.songs?.[0]?.al.name}</a>
+            <a>{detailPageDetail.al?.name}</a>
           </div>
           <div className="mt-30px">
-            {lyrics.map((item, index) => {
+            {detailPageLyric.map((item, index) => {
               return (
                 <div
                   key={index}
-                  className={`leading-23px ${index === lyricIndex ? 'text-[red]' : ''}`}
+                  className={`leading-23px ${index === lyricIndex && id == currentSong.id ? 'text-[red] origin-0 scale-200 transform' : ''}`}
                 >
                   {item.text}
                 </div>

@@ -1,6 +1,5 @@
 import { memo, useEffect } from 'react'
 import type { ReactNode, FC } from 'react'
-import dayjs from 'dayjs'
 import { useSearchParams } from 'react-router-dom'
 import { RecommendWrapper } from '../recommend/style'
 import { Table } from 'antd'
@@ -9,8 +8,8 @@ import {
   fetchGetTopListAction,
   fetchGetTopListDetailAction
 } from '../recommend/store/recommend'
-import PlayBtn from '@/components/play-btn'
 import TopDetail from '../recommend/c-cpns/top-detail'
+import { TableColumns } from '@/components/table-columns'
 interface IProps {
   children?: ReactNode
 }
@@ -22,8 +21,6 @@ const Ranking: FC<IProps> = () => {
   const { topList = [], topListSongs } = useAppSelector(
     (state) => state.recommend
   )
-  // 获取当前歌曲
-  const { currentSong } = useAppSelector((state) => state.player)
   // 当id为空时，调用dispatch函数，获取排行榜信息
   useEffect(() => {
     dispatch(fetchGetTopListAction())
@@ -38,59 +35,7 @@ const Ranking: FC<IProps> = () => {
     }
   }, [id, topList])
 
-  const columns = [
-    {
-      title: '',
-      key: 'index',
-      render: (_text: string, record: any, index: number) => {
-        return (
-          <div className="flex items-center">
-            <span>{index + 1}</span>
-            {record.fee === 1 && (
-              <div
-                className="sprite_icon2 ml-4px"
-                style={{
-                  width: '15px',
-                  height: '12px',
-                  backgroundPosition: '0px 0'
-                }}
-              ></div>
-            )}
-          </div>
-        )
-      }
-    },
-    {
-      title: '标题',
-      dataIndex: 'name',
-      key: 'name',
-      width: 300,
-      render: (text: string, record: any) => {
-        return (
-          <div className="flex items-center">
-            <PlayBtn id={record.id} fee={record.fee}></PlayBtn>
-            <a href={`#/discover/player?id=${record.id}`}>{text}</a>
-          </div>
-        )
-      }
-    },
-    {
-      title: '时长',
-      dataIndex: 'age',
-      key: 'age',
-      render: (_: any, record: any) => {
-        return <span>{dayjs(new Date(record?.dt)).format('mm:ss')}</span>
-      }
-    },
-    {
-      title: '歌手',
-      dataIndex: 'address',
-      key: 'address',
-      render: (_: any, record: any) => {
-        return <span>{record?.ar[0].name}</span>
-      }
-    }
-  ]
+  const columns = TableColumns()
 
   // 渲染菜单项函数
   function renderMenuItem(props: any) {
@@ -134,9 +79,6 @@ const Ranking: FC<IProps> = () => {
             pagination={false}
             columns={columns}
             rowKey={(record) => record.id}
-            rowClassName={(record) =>
-              record.id == currentSong?.id ? 'currentPlaySong' : ''
-            }
           ></Table>
         </div>
       </div>

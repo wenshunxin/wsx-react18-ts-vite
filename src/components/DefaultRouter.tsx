@@ -1,6 +1,7 @@
-import { memo } from 'react'
+import { Suspense, memo } from 'react'
 import type { ReactNode, FC } from 'react'
 import { Outlet } from 'react-router-dom'
+import { Spin } from 'antd'
 interface IProps {
   children?: ReactNode
 }
@@ -8,7 +9,9 @@ interface IProps {
 const DefaultRouter: FC<IProps> = () => {
   return (
     <div>
-      <Outlet />
+      <Suspense fallback={<Spin></Spin>}>
+        <Outlet />
+      </Suspense>
     </div>
   )
 }

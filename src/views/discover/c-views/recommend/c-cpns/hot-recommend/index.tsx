@@ -42,7 +42,7 @@ const HotRecommend: FC<IProps> = () => {
         </a>
       </RecTitle>
       <ul className="-ml-42px flex flex-wrap mt-20px">
-        {hotRecommendList.map((item, index) => {
+        {hotRecommendList?.map((item, index) => {
           return (
             <li key={index} className="pl-42px w-140px h-204px box-content">
               <div className="relative w-140px h-140px">

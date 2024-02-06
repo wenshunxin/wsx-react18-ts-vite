@@ -82,6 +82,7 @@ const Songs: FC<IProps> = () => {
                 <a
                   title={item.name}
                   className="block line-clamp-1 text-[#000] text-[14px]"
+                  href={`#/playlist?id=${item.id}`}
                 >
                   {item.name}
                 </a>

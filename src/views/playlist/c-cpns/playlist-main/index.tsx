@@ -25,7 +25,7 @@ const PlaylistMain: FC<IProps> = () => {
   }, [])
   return (
     <MainWrapper>
-      <MainHeader detail={playlistDetail} />
+      <MainHeader detail={playlistDetail} tracks={tracks} />
       <MainTable tracks={tracks} />
       <HotComment />
     </MainWrapper>

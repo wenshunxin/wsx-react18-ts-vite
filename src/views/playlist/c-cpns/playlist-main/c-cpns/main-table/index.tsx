@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import type { ReactNode, FC } from 'react'
 import { Table } from 'antd'
-import { TableColumns } from '@/utils/table-columns'
+import { TableColumns } from '@/components/table-columns'
 interface IProps {
   tracks: any[]
   children?: ReactNode
@@ -10,7 +10,7 @@ interface IProps {
 const MainTable: FC<IProps> = (props) => {
   const { tracks } = props
   const columns = [
-    ...TableColumns,
+    ...TableColumns(),
     {
       title: '专辑',
       width: 120,
