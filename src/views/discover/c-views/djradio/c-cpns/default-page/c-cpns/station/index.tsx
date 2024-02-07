@@ -29,7 +29,7 @@ const Station: FC<IProps> = (props) => {
               key={index}
               className="flex ml-30px py-20px w-435px border-b-1 border-color-[#e7e7d5]"
             >
-              <a>
+              <a href={`#/djradio?id=${item.id}`}>
                 <img src={getImgUrl(item.picUrl, 120)} />
               </a>
               <div className="ml-20px">

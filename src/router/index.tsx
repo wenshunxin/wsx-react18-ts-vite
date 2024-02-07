@@ -9,11 +9,11 @@ const Download = lazy(() => import('@/views/download'))
 /** discover 二级路由 */
 const Recommend = lazy(() => import('@/views/discover/c-views/recommend'))
 const Songs = lazy(() => import('@/views/discover/c-views/songs'))
-const Djradio = lazy(() => import('@/views/discover/c-views/djradio'))
 const Album = lazy(() => import('@/views/discover/c-views/album'))
 const DiscoverArtist = lazy(() => import('@/views/discover/c-views/artist'))
 const Ranking = lazy(() => import('@/views/discover/c-views/ranking'))
 const PlayerSong = lazy(() => import('@/views/player/player-detail'))
+const Djradio = lazy(() => import('@/views/discover/c-views/djradio'))
 
 const RecommendSinger = lazy(
   () => import('@/views/discover/c-views/artist/c-cpns/recommended-singer')
@@ -27,12 +27,14 @@ import RankProgram from '@/views/discover/c-views/djradio/c-cpns/rank-program'
 import Playlist from '@/views/playlist'
 import DefaultRouter from '@/components/DefaultRouter'
 import Artist from '@/views/artist'
+import Program from '@/views/djradio/program'
 
 const ArtistHit = lazy(() => import('@/views/artist/c-views/hit'))
 const ArtistAlbums = lazy(() => import('@/views/artist/c-views/albums'))
 const ArtistMv = lazy(() => import('@/views/artist/c-views/mv'))
 const ArtistDesc = lazy(() => import('@/views/artist/c-views/desc'))
 const AlbumDetail = lazy(() => import('@/views/album/index'))
+const DjRadio = lazy(() => import('@/views/djradio'))
 
 const routes: RouteObject[] = [
   {
@@ -119,6 +121,14 @@ const routes: RouteObject[] = [
       {
         path: 'album',
         element: <AlbumDetail />
+      },
+      {
+        path: 'program',
+        element: <Program />
+      },
+      {
+        path: 'djradio',
+        element: <DjRadio />
       }
     ]
   },

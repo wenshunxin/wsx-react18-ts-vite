@@ -45,12 +45,12 @@ const DjHot: FC<IProps> = () => {
               key={index}
               className="w-435px h-120px py-20px ml-30px border-b-1 flex box-content border-color-[#e7e7e7]"
             >
-              <a>
+              <a href={`#/djradio?id=${item.id}`}>
                 <img src={getImgUrl(item.picUrl, 120)} />
               </a>
               <div className="ml-20px">
                 <h2 className="leading-64px text-[#333] font-bold text-[18px]">
-                  {item.name}
+                  <a href={`#/djradio?id=${item.id}`}>{item.name}</a>
                 </h2>
                 <div className="flex items-center">
                   <i
