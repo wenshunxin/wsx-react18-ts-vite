@@ -4,7 +4,8 @@ import Playing from '@/components/playing'
 import { shallowEqualApp, useAppSelector } from '@/store'
 //
 
-export const TableColumns = () => {
+export const TableColumns = (props?: any) => {
+  const { Mv = '' } = props || {}
   const { isPlaying, currentSong } = useAppSelector(
     (state) => state.player,
     shallowEqualApp
@@ -44,6 +45,7 @@ export const TableColumns = () => {
               <PlayBtn id={record.id} fee={record.fee}></PlayBtn>
             )}
             <a href={`#/discover/player?id=${record.id}`}>{text}</a>
+            {record.mv != 0 && Mv}
           </div>
         )
       }

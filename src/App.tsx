@@ -1,27 +1,15 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { ConfigProvider, Spin, Watermark, theme } from 'antd'
 import routes from './router'
 import AppHeader from './components/app-header'
 import AppFooter from './components/app-footer'
 import Player from './views/player'
-import hyRequest from './service'
 export default function App() {
   const colorPrimary = '#1D4D9F'
   const style: any = {
     '--primary-color': colorPrimary
   }
-
-  useEffect(() => {
-    hyRequest
-      .get({
-        url: `/login/cellphone?phone=17778171251&password=wenshunxin123`
-      })
-      .then((res) => {
-        console.log(res)
-        hyRequest.get({ url: '/login/refresh' })
-      })
-  })
 
   return (
     <ConfigProvider

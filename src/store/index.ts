@@ -21,6 +21,7 @@ import AlbumSlice from '../views/discover/c-views/album/store/index'
 import ArtistSlice from '../views/discover/c-views/artist/store/index'
 import DjSlice from '@/views/discover/c-views/djradio/store'
 import PlaylistSlice from '@/views/playlist/store'
+import artistDetailSlice from '@/views/artist/store'
 // 创建一个全局折叠过滤器，过滤器接收两个参数，player里面的lyrics
 const globalCollapsedFilter = createFilter('player', ['lyrics'])
 const djCollapsedFilter = createFilter('dj', ['djCateList'])
@@ -44,7 +45,8 @@ const reducer = combineReducers({
   album: AlbumSlice,
   artist: ArtistSlice,
   dj: DjSlice,
-  playlist: PlaylistSlice
+  playlist: PlaylistSlice,
+  artistDetail: artistDetailSlice
 })
 /**
  * 解决数据状态不持久化

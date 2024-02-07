@@ -120,9 +120,13 @@
 │   │   ├── play-btn
 │   │   │   ├── index.tsx
 │   │   │   └── style.ts
-│   │   └── rotating-picture
-│   │       ├── index.tsx
-│   │       └── style.ts
+│   │   ├── playing
+│   │   │   ├── index.tsx
+│   │   │   └── style.ts
+│   │   ├── rotating-picture
+│   │   │   ├── index.tsx
+│   │   │   └── style.ts
+│   │   └── table-columns.tsx
 │   ├── hooks
 │   ├── main.tsx
 │   ├── router
@@ -142,9 +146,26 @@
 │   │   ├── format-utils.ts
 │   │   ├── index.ts
 │   │   ├── parse-lyric.ts
-│   │   ├── table-columns.tsx
 │   │   └── tool.ts
 │   ├── views
+│   │   ├── artist
+│   │   │   ├── c-cpns
+│   │   │   │   └── header
+│   │   │   │       └── index.tsx
+│   │   │   ├── c-views
+│   │   │   │   ├── albums
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── desc
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── hit
+│   │   │   │   │   └── index.tsx
+│   │   │   │   └── mv
+│   │   │   │       └── index.tsx
+│   │   │   ├── index.tsx
+│   │   │   ├── store
+│   │   │   │   ├── action.ts
+│   │   │   │   └── index.ts
+│   │   │   └── style.ts
 │   │   ├── demo
 │   │   │   └── template.tsx
 │   │   ├── discover
@@ -311,4 +332,4 @@
 ├── vite.config.ts
 └── windi.config.ts
 
-99 directories, 213 files
+109 directories, 224 files
