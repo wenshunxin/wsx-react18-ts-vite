@@ -19,7 +19,6 @@ const ArtistAlbums: FC<IProps> = () => {
     (state) => state.artistDetail,
     shallowEqualApp
   )
-  console.log(a)
   const [offset, setOffset] = useState(1)
   useEffect(() => {
     dispatch(

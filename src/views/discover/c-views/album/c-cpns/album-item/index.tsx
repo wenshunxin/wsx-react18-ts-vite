@@ -14,13 +14,17 @@ const AlbumItem: FC<IProps> = (props) => {
   return (
     <AlbumItemWrap>
       <div className="sprite_cover ">
-        <div className="relative w-130px">
-          <img src={getImgUrl(picUrl, 130)}></img>
-          <a className="sprite_icon"></a>
-        </div>
+        <a href={`#/album?id=${artist.id}`}>
+          <div className="relative w-130px">
+            <img src={getImgUrl(picUrl, 130)}></img>
+            <a className="sprite_icon"></a>
+          </div>
+        </a>
       </div>
       <div>
-        <p className="line-clamp-1">{name}</p>
+        <a className="line-clamp-1" href={`#/album?id=${artist.id}`}>
+          {name}
+        </a>
         <p>
           <a className="text-[#666]">{artist?.name}</a>
         </p>

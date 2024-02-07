@@ -4,7 +4,7 @@ import { MenuBtnWrapper } from '../menu-btn/style'
 import { useAppDispatch } from '@/store'
 import { handleChangePlaySongListAction } from '@/views/player/store/action'
 interface IProps {
-  subscribedCount: number
+  subscribedCount: number | string
   shareCount: number
   commentCount: number
   tracks: any[] // 歌曲列表

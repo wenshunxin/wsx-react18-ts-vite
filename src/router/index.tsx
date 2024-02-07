@@ -32,6 +32,7 @@ const ArtistHit = lazy(() => import('@/views/artist/c-views/hit'))
 const ArtistAlbums = lazy(() => import('@/views/artist/c-views/albums'))
 const ArtistMv = lazy(() => import('@/views/artist/c-views/mv'))
 const ArtistDesc = lazy(() => import('@/views/artist/c-views/desc'))
+const AlbumDetail = lazy(() => import('@/views/album/index'))
 
 const routes: RouteObject[] = [
   {
@@ -114,6 +115,10 @@ const routes: RouteObject[] = [
           { path: 'mv', element: <ArtistMv /> },
           { path: 'desc', element: <ArtistDesc /> }
         ]
+      },
+      {
+        path: 'album',
+        element: <AlbumDetail />
       }
     ]
   },
