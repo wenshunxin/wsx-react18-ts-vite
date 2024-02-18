@@ -36,6 +36,8 @@ const ArtistDesc = lazy(() => import('@/views/artist/c-views/desc'))
 const AlbumDetail = lazy(() => import('@/views/album/index'))
 const DjRadio = lazy(() => import('@/views/djradio'))
 
+const UserHome = lazy(() => import('@/views/user/home/index'))
+
 const routes: RouteObject[] = [
   {
     path: '/',
@@ -129,6 +131,20 @@ const routes: RouteObject[] = [
       {
         path: 'djradio',
         element: <DjRadio />
+      }
+    ]
+  },
+  {
+    path: 'user',
+    element: <DefaultRouter />,
+    children: [
+      {
+        path: '',
+        element: <Navigate to={'/user/home'}></Navigate>
+      },
+      {
+        path: 'home',
+        element: <UserHome />
       }
     ]
   },

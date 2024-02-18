@@ -37,7 +37,10 @@ const AlbumHeader: FC<IProps> = () => {
               <h2 className="text-[20px] leading-24px ml-10px">{a?.name}</h2>
             </div>
             <p className="mt-8px mb-3px">
-              歌手：<a>{a?.artist?.name}</a>
+              歌手：
+              <a className="primary" href={`#/artist?id=${a?.artist?.id}`}>
+                {a?.artist?.name}
+              </a>
             </p>
             <p className="mt-8px mb-3px">
               发行时间：{dayjs(a.publishTime).format('YYYY-MM-DD')}

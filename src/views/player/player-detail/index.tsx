@@ -72,11 +72,15 @@ const PlayerSong: FC<IProps> = () => {
           </div>
           <div className="flex items-center mt-10px mb-10px">
             <i>歌手：</i>
-            <a>{detailPageDetail.ar?.[0].name}</a>
+            <a href={`#/artist?id=${detailPageDetail.ar?.[0].id}`}>
+              {detailPageDetail.ar?.[0].name}
+            </a>
           </div>
           <div className="flex items-center mb-10px">
             <i>所属专辑：</i>
-            <a>{detailPageDetail.al?.name}</a>
+            <a href={`#/album?id=${detailPageDetail.al?.id}`}>
+              {detailPageDetail.al?.name}
+            </a>
           </div>
           <div className="mt-30px">
             {detailPageLyric.map((item, index) => {

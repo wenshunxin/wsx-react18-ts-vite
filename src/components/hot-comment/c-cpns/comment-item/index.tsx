@@ -23,7 +23,12 @@ const CommentItem: FC<IProps> = (props) => {
       <div className="cntwrap ml-10px flex-1">
         <div>
           <div className=" cnt items-center">
-            <a className="text-[#0c73c2]">{user.nickname}</a>
+            <a
+              className="text-[#0c73c2]"
+              href={`#/user/home?id=${user.userId}`}
+            >
+              {user.nickname}
+            </a>
             {user.vipRights && (
               <img
                 src={user.vipRights?.associator?.iconUrl}
@@ -40,7 +45,12 @@ const CommentItem: FC<IProps> = (props) => {
               <i className="bg">◆</i>
             </div>
             <div>
-              <a className="text-[#0c73c2]">{beReplied?.[0]?.user.nickname}</a>
+              <a
+                className="text-[#0c73c2]"
+                href={`#/user/home?id=${beReplied?.[0]?.user.userId}`}
+              >
+                {beReplied?.[0]?.user.nickname}
+              </a>
               {user.vipRights && (
                 <img
                   src={beReplied?.[0]?.user.vipRights?.associator?.iconUrl}
