@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const DjRadioHeader: FC<IProps> = () => {
-  const { dj } = useAppSelector((state) => state.djDetail, shallowEqualApp)
+  const { dj = {} } = useAppSelector((state) => state.djDetail, shallowEqualApp)
   return (
     <div className="flex">
       <div className="w-208px h-208px flex items-center justify-center border-1 border-color-[#d3d3d3]">
