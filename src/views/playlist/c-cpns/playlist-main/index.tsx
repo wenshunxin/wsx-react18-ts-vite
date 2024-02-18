@@ -5,7 +5,10 @@ import MainHeader from './c-cpns/main-header'
 import MainTable from './c-cpns/main-table'
 import HotComment from '@/components/hot-comment'
 import { shallowEqualApp, useAppDispatch, useAppSelector } from '@/store'
-import { fetchGetPlaylistDetailAction } from '../../store/action'
+import {
+  fetchGetPlaylistCommentAction,
+  fetchGetPlaylistDetailAction
+} from '../../store/action'
 import { useSearchParams } from 'react-router-dom'
 interface IProps {
   children?: ReactNode
@@ -13,21 +16,20 @@ interface IProps {
 
 const PlaylistMain: FC<IProps> = () => {
   const dispatch = useAppDispatch()
-  const { playlistDetail, tracks } = useAppSelector(
-    (state) => state.playlist,
-    shallowEqualApp
-  )
+  const { playlistDetail, tracks, hotComments, comments, total } =
+    useAppSelector((state) => state.playlist, shallowEqualApp)
   const [searchParams] = useSearchParams()
   const id = searchParams.get('id') as unknown as number
 
   useEffect(() => {
     dispatch(fetchGetPlaylistDetailAction(id))
+    dispatch(fetchGetPlaylistCommentAction(id))
   }, [])
   return (
     <MainWrapper>
       <MainHeader detail={playlistDetail} tracks={tracks} />
       <MainTable tracks={tracks} />
-      <HotComment />
+      <HotComment hotComments={hotComments} comments={comments} total={total} />
     </MainWrapper>
   )
 }

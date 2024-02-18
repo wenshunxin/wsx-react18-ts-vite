@@ -3,7 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import {
   changeDjRadioAction,
   changeDjProgramsAction,
-  changeProgramDetailAction
+  changeProgramDetailAction,
+  changeDjProgramsCommentAction
 } from '.'
 
 export const getDjRadioApi = (id: number) =>
@@ -37,5 +38,21 @@ export const fetchDjProgramDetailAction = createAsyncThunk<void, number>(
   async (id, { dispatch }) => {
     const res = await getDjProgramDetailApi(id)
     dispatch(changeProgramDetailAction(res.program))
+  }
+)
+
+/**
+ * 获取电台节目评论
+ */
+export const getDjProgramCommentApi = (id: number) =>
+  hyRequest.get({
+    url: `/comment/dj?id=${id}`
+  })
+
+export const fetchDjProgramCommentAction = createAsyncThunk<void, number>(
+  'djprogramcomment',
+  async (id, { dispatch }) => {
+    const res = await getDjProgramCommentApi(id)
+    dispatch(changeDjProgramsCommentAction(res))
   }
 )

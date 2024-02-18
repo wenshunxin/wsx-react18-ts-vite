@@ -2,10 +2,14 @@ import { shallowEqualApp, useAppDispatch, useAppSelector } from '@/store'
 import { memo, useEffect } from 'react'
 import type { ReactNode, FC } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { fetchDjProgramDetailAction } from '../store/action'
+import {
+  fetchDjProgramDetailAction,
+  fetchDjProgramCommentAction
+} from '../store/action'
 import { getImgUrl } from '@/utils'
 import { Button, Space } from 'antd'
 import dayjs from 'dayjs'
+import HotComment from '@/components/hot-comment'
 interface IProps {
   children?: ReactNode
 }
@@ -14,12 +18,15 @@ const Program: FC<IProps> = () => {
   const dispatch = useAppDispatch()
   const [searchParams] = useSearchParams()
   const id = searchParams.get('id') as unknown as number
-  const { programDetail: d } = useAppSelector(
-    (state) => state.djDetail,
-    shallowEqualApp
-  )
+  const {
+    programDetail: d,
+    hotComments,
+    comments,
+    total
+  } = useAppSelector((state) => state.djDetail, shallowEqualApp)
   useEffect(() => {
     dispatch(fetchDjProgramDetailAction(id))
+    dispatch(fetchDjProgramCommentAction(id))
   }, [])
   return (
     <div className="wrap2 wrap-v2">
@@ -102,6 +109,11 @@ const Program: FC<IProps> = () => {
         >
           {d.description}
         </div>
+        <HotComment
+          hotComments={hotComments}
+          comments={comments}
+          total={total}
+        />
       </div>
     </div>
   )
