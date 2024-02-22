@@ -35,7 +35,19 @@ const Ranking: FC<IProps> = () => {
     }
   }, [id, topList])
 
-  const columns = TableColumns()
+  const columns = TableColumns({
+    Mv: (
+      <a
+        className="u_table block"
+        style={{
+          width: '23px',
+          height: '17px',
+          margin: '1px 0 0 4px',
+          backgroundPosition: ' 0 -151px'
+        }}
+      ></a>
+    )
+  })
 
   // 渲染菜单项函数
   function renderMenuItem(props: any) {

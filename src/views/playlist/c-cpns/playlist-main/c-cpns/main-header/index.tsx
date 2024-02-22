@@ -28,7 +28,12 @@ const MainHeader: FC<IProps> = (props) => {
           <a>
             <img src={getImgUrl(d.creator?.avatarUrl, 35)} />
           </a>
-          <a className="ml-10px">{d.creator?.nickname}</a>
+          <a
+            className="ml-10px primary"
+            href={`#/user/home?id=${d.creator?.userId}`}
+          >
+            {d.creator?.nickname}
+          </a>
           <img
             src={getImgUrl(d.creator?.avatarDetail?.identityIconUrl, 13)}
             className="w-13px h-13px"

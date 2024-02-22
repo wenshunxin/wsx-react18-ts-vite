@@ -37,20 +37,25 @@ const NewAlbum: FC<IProps> = () => {
                 {albumNewestList.slice(0, 5).map((item) => {
                   return (
                     <li key={item.id} className="w-118px ml-11px">
-                      <div
-                        className="sprite_cover"
-                        style={{
-                          width: '118px',
-                          height: '100px',
-                          backgroundPosition: '0 -570px'
-                        }}
+                      <a href={`#/album?id=${item.id}`}>
+                        <div
+                          className="sprite_cover"
+                          style={{
+                            width: '118px',
+                            height: '100px',
+                            backgroundPosition: '0 -570px'
+                          }}
+                        >
+                          <img src={getImgUrl(item.picUrl, 100)} alt="" />
+                        </div>
+                        <p className="line-clamp-1 leading-18px text-[12px] text-[#000] mt-7px">
+                          {item.name}
+                        </p>
+                      </a>
+                      <a
+                        className="text-[#666] leading-18px primary"
+                        href={`#/artist?id=${item.artist?.id}`}
                       >
-                        <img src={getImgUrl(item.picUrl, 100)} alt="" />
-                      </div>
-                      <p className="line-clamp-1 leading-18px text-[12px] text-[#000] mt-7px">
-                        {item.name}
-                      </p>
-                      <a className="text-[#666] leading-18px">
                         {item.artist?.name}
                       </a>
                     </li>

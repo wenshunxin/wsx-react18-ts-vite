@@ -32,4 +32,28 @@ export const HeaderLeft = styled.div`
   }
 `
 
-export const HeaderRight = styled.div``
+export const HeaderRight = styled.div`
+  .u-lstlay {
+    position: absolute;
+    z-index: 120;
+    left: 0;
+    box-sizing: border-box;
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 7px #555;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+    top: 59px;
+    width: 240px;
+    height: 300px;
+    color: #333;
+    p {
+      height: 17px;
+      padding: 11px 10px;
+      border-bottom: 1px solid #e2e2e2;
+      box-sizing: content-box;
+    }
+    div.rap {
+    }
+  }
+`

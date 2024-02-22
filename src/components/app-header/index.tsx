@@ -3,7 +3,7 @@ import type { ReactNode, FC } from 'react'
 import { HeaderWrapper, HeaderLeft, HeaderRight } from './style'
 import HeaderTitles from '@/assets/data/header_titles.json'
 import { NavLink, useLocation } from 'react-router-dom'
-import { Input } from 'antd'
+import Search from './search'
 interface IProps {
   children?: ReactNode
 }
@@ -54,8 +54,8 @@ const AppHeader: FC<IProps> = () => {
               })}
             </div>
           </HeaderLeft>
-          <HeaderRight className="flex items-center">
-            <Input placeholder="音乐/用户" className="rounded-32px"></Input>
+          <HeaderRight className="flex items-center relative">
+            <Search />
           </HeaderRight>
         </div>
         {location.pathname.indexOf('/discover') === -1 && (

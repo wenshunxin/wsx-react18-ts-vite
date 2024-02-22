@@ -15,7 +15,14 @@ const MainTable: FC<IProps> = (props) => {
       title: '专辑',
       width: 120,
       render: (_: any, record: any) => {
-        return <a className="line-clamp-1">{record.al?.name}</a>
+        return (
+          <a
+            className="line-clamp-1 primary"
+            href={`#/album?id=${record.al?.id}`}
+          >
+            {record.al?.name}
+          </a>
+        )
       }
     }
   ]

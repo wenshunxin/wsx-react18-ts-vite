@@ -40,8 +40,10 @@ export const TableColumns = (props?: any) => {
       render: (text: string, record: any) => {
         return (
           <div className="flex items-center">
-            {isPlaying && record.id === currentSong?.id && <Playing />}
-            {record.id != currentSong?.id && (
+            {/* 正在播放并且当前ID和播放的i相等 */}
+            {isPlaying && record.id === currentSong?.id ? (
+              <Playing />
+            ) : (
               <PlayBtn id={record.id} fee={record.fee}></PlayBtn>
             )}
             <a href={`#/discover/player?id=${record.id}`}>{text}</a>
@@ -63,7 +65,14 @@ export const TableColumns = (props?: any) => {
       dataIndex: 'address',
       key: 'address',
       render: (_: any, record: any) => {
-        return <a className="line-clamp-1">{record?.ar[0].name}</a>
+        return (
+          <a
+            className="line-clamp-1 primary"
+            href={`#/artist?id=${record?.ar[0].id}`}
+          >
+            {record?.ar[0].name}
+          </a>
+        )
       }
     }
   ]
