@@ -23,7 +23,7 @@ const AlbumDetail: FC<IProps> = () => {
   useEffect(() => {
     dispatch(fetchAlbumDetailAction(id))
     dispatch(fetchAlbumCommentAction(id))
-  }, [])
+  }, [id])
   return (
     <div className="wrap-v2 wrap2">
       <div className="left">

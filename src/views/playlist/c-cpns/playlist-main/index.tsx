@@ -24,7 +24,7 @@ const PlaylistMain: FC<IProps> = () => {
   useEffect(() => {
     dispatch(fetchGetPlaylistDetailAction(id))
     dispatch(fetchGetPlaylistCommentAction(id))
-  }, [])
+  }, [id])
   return (
     <MainWrapper>
       <MainHeader detail={playlistDetail} tracks={tracks} />

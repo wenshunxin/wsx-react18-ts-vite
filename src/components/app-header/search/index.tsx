@@ -16,6 +16,11 @@ const Search: FC<IProps> = () => {
   function handleOnFocus() {
     setShow(value != '')
   }
+  function handleOnBlur() {
+    setTimeout(() => {
+      setShow(false)
+    }, 100)
+  }
   function handleOnChange(e: any) {
     setValue(e.target.value)
     setShow(e.target.value != '')
@@ -24,7 +29,6 @@ const Search: FC<IProps> = () => {
     }
   }
   useEffect(() => {
-    console.log(value)
     dispatch(fetchGetSearchAction(value))
   }, [value])
   const map = new Map([
@@ -33,28 +37,26 @@ const Search: FC<IProps> = () => {
     ['albums', { name: '专辑', position: '-35px -320px' }],
     ['playlists', { name: '歌单', position: '-50px -320px' }]
   ])
-  // 渲染搜索结果
-  function handleRender() {
-    const order = s?.['order'] || []
-    let html = ''
-    order.forEach((item: string) => {
-      console.log(map.get(item))
-      console.log(s[item])
-      const { name, position } = map.get(item) as {
-        name: string
-        position: string
-      }
-      html += (
-        <div className="itm">
-          <h3>
-            <i style={{ backgroundPosition: position }}></i>
-            <span>${name}</span>
-          </h3>
-        </div>
-      )
-    })
-    console.log(html)
-    return html
+
+  function handleGoRouter(it: any, key: string) {
+    let href = ''
+    switch (key) {
+      case 'songs':
+        href = '#/discover/player?id=' + it.id
+        break
+      case 'artists':
+        href = '#/artist?id=' + it.id
+        break
+      case 'albums':
+        href = '#/album?id=' + it.id
+        break
+      case 'playlists':
+        href = '#/playlist?id=' + it.id
+        break
+      default:
+        href = ''
+    }
+    return href
   }
 
   return (
@@ -65,12 +67,45 @@ const Search: FC<IProps> = () => {
         className="rounded-32px"
         onChange={handleOnChange}
         onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
       ></Input>
       <div className="u-lstlay" style={{ display: show ? 'block' : 'none' }}>
         <p>
           <a>搜“{value}”相关用户啊&gt;</a>
         </p>
-        {handleRender()}
+        {s?.['order']?.map((item: any) => {
+          return (
+            <div className="itm flex w-fulls" key={item}>
+              <h3 className="w-62px flex items-start justify-center pt-10px">
+                <i
+                  className="sprite_icon2 w-15px h-15px"
+                  style={{
+                    backgroundPosition: map.get(item)?.position
+                  }}
+                ></i>
+                <span>{map.get(item)?.name}</span>
+              </h3>
+              <div className="flex-1 leading-24px border-l-1 border-color-[#e2e2e2] border-b-1 pt-6px pb-5px">
+                {s[item].map((it: any, index: number) => {
+                  return (
+                    <a
+                      key={index}
+                      className="pl-10px flex"
+                      href={handleGoRouter(it, item)}
+                    >
+                      <span className="line-clamp-1 inline-block">
+                        {it.name}
+                      </span>
+                      {item === 'songs' && (
+                        <span>-{it?.artists?.[0]?.name}</span>
+                      )}
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
       </div>
     </>
   )

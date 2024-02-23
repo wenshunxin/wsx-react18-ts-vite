@@ -45,7 +45,6 @@ export const HeaderRight = styled.div`
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
     top: 59px;
     width: 240px;
-    height: 300px;
     color: #333;
     p {
       height: 17px;
@@ -54,6 +53,10 @@ export const HeaderRight = styled.div`
       box-sizing: content-box;
     }
     div.rap {
+    }
+    .pl-10px:hover {
+      background: #e3e5e7;
+      cursor: pointer;
     }
   }
 `

@@ -30,8 +30,6 @@ const PlayerSong: FC<IProps> = () => {
 
     id && dispatch(fetchDetailPageSongDetailAction(~~id))
     id && dispatch(fetchDetailPageLyricAction(~~id))
-
-    console.log(detailPageDetail)
   }, [id])
 
   return (
