@@ -11,6 +11,9 @@ interface IProps {
 }
 
 const Recommend: FC<IProps> = () => {
+  function handleRender() {
+    return <div>1212</div>
+  }
   return (
     <RecommendWrapper>
       <TopBanner></TopBanner>
@@ -24,6 +27,7 @@ const Recommend: FC<IProps> = () => {
           {/* 榜单 */}
           <RecList />
         </div>
+        <div className="right">{handleRender()}</div>
       </div>
     </RecommendWrapper>
   )

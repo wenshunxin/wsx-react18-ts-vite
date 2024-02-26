@@ -28,6 +28,7 @@ import Playlist from '@/views/playlist'
 import DefaultRouter from '@/components/DefaultRouter'
 import Artist from '@/views/artist'
 import Program from '@/views/djradio/program'
+import User from '@/views/user'
 
 const ArtistHit = lazy(() => import('@/views/artist/c-views/hit'))
 const ArtistAlbums = lazy(() => import('@/views/artist/c-views/albums'))
@@ -36,7 +37,10 @@ const ArtistDesc = lazy(() => import('@/views/artist/c-views/desc'))
 const AlbumDetail = lazy(() => import('@/views/album/index'))
 const DjRadio = lazy(() => import('@/views/djradio'))
 
-const UserHome = lazy(() => import('@/views/user/home/index'))
+const UserHome = lazy(() => import('@/views/user/c-cpns/home/index'))
+const UserEvent = lazy(() => import('@/views/user/c-cpns/event'))
+const UserFollows = lazy(() => import('@/views/user/c-cpns/follows'))
+const UserFans = lazy(() => import('@/views/user/c-cpns/fans'))
 
 const routes: RouteObject[] = [
   {
@@ -136,7 +140,7 @@ const routes: RouteObject[] = [
   },
   {
     path: 'user',
-    element: <DefaultRouter />,
+    element: <User />,
     children: [
       {
         path: '',
@@ -145,7 +149,13 @@ const routes: RouteObject[] = [
       {
         path: 'home',
         element: <UserHome />
-      }
+      },
+      {
+        path: 'event',
+        element: <UserEvent />
+      },
+      { path: 'follows', element: <UserFollows /> },
+      { path: 'fans', element: <UserFans /> }
     ]
   },
 

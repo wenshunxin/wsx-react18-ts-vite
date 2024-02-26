@@ -33,7 +33,7 @@ export const HeaderLeft = styled.div`
 `
 
 export const HeaderRight = styled.div`
-  .u-lstlay {
+  .u-lstat {
     position: absolute;
     z-index: 120;
     left: 0;

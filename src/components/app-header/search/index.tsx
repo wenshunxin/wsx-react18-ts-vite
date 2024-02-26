@@ -69,7 +69,7 @@ const Search: FC<IProps> = () => {
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
       ></Input>
-      <div className="u-lstlay" style={{ display: show ? 'block' : 'none' }}>
+      <div className="u-lstat" style={{ display: show ? 'block' : 'none' }}>
         <p>
           <a>搜“{value}”相关用户啊&gt;</a>
         </p>
