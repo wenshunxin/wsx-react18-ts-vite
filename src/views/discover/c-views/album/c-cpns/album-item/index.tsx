@@ -17,7 +17,7 @@ const AlbumItem: FC<IProps> = (props) => {
         <a href={`#/album?id=${artist.id}`}>
           <div className="relative w-130px">
             <img src={getImgUrl(picUrl, 130)}></img>
-            <a className="sprite_icon"></a>
+            <i className="sprite_icon"></i>
           </div>
         </a>
       </div>
