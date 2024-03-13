@@ -20,7 +20,6 @@ const UserFollows: FC<IProps> = () => {
   useEffect(() => {
     dispatch(fetchUserFollowsAction(id))
   }, [id])
-  console.log(follows, 'follows')
   return (
     <div className="mt-20px ">
       <div className="border-b-2 border-color-[#c20c0c] text-[20px] leading-28px text-[#666]">

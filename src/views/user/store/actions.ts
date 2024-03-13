@@ -3,7 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import {
   changeUserInfoAction,
   changePlaylistAction,
-  changeFollowsAction
+  changeFollowsAction,
+  changeFansAction
 } from '.'
 
 /**
@@ -45,5 +46,18 @@ export const fetchUserFollowsAction = createAsyncThunk(
   async (id: number, { dispatch }) => {
     const res = await getUserfollowsApi(id)
     dispatch(changeFollowsAction(res.follow))
+  }
+)
+
+/**
+ * 获取当前用户的粉丝
+ */
+export const getUserFollowedApi = (id: number) =>
+  hyRequest.get({ url: `/user/followeds?uid=${id}` })
+export const fetchUserFollowedAction = createAsyncThunk(
+  'userFollowed',
+  async (id: number, { dispatch }) => {
+    const res = await getUserFollowedApi(id)
+    dispatch(changeFansAction(res.followeds))
   }
 )

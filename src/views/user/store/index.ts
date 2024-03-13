@@ -3,11 +3,13 @@ interface IState {
   userInfo: any
   playlist: any[]
   follows: any[]
+  fans: any[]
 }
 const initialState: IState = {
   userInfo: {},
   playlist: [],
-  follows: []
+  follows: [],
+  fans: []
 }
 export const userSlice = createSlice({
   name: 'user',
@@ -21,6 +23,9 @@ export const userSlice = createSlice({
     },
     changeFollowsAction: (state, { payload }) => {
       state.follows = payload
+    },
+    changeFansAction: (state, { payload }) => {
+      state.fans = payload
     }
   }
 })
@@ -28,6 +33,7 @@ export const userSlice = createSlice({
 export const {
   changeUserInfoAction,
   changePlaylistAction,
-  changeFollowsAction
+  changeFollowsAction,
+  changeFansAction
 } = userSlice.actions
 export default userSlice.reducer
