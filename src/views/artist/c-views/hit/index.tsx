@@ -19,17 +19,20 @@ const ArtistHit: FC<IProps> = () => {
   const id = searchParams.get('id') as unknown as number
   const columns = [
     ...TableColumns({
-      Mv: (
-        <a
-          className="u_table block"
-          style={{
-            width: '23px',
-            height: '17px',
-            margin: '1px 0 0 4px',
-            backgroundPosition: ' 0 -151px'
-          }}
-        ></a>
-      )
+      Mv: (mv: number) => {
+        return (
+          <a
+            className="u_table block"
+            href={`#/mv?id=${mv}`}
+            style={{
+              width: '23px',
+              height: '17px',
+              margin: '1px 0 0 4px',
+              backgroundPosition: ' 0 -151px'
+            }}
+          ></a>
+        )
+      }
     })
   ]
 

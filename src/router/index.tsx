@@ -29,6 +29,7 @@ import DefaultRouter from '@/components/DefaultRouter'
 import Artist from '@/views/artist'
 import Program from '@/views/djradio/program'
 import User from '@/views/user'
+import Mv from '@/views/mv'
 
 const ArtistHit = lazy(() => import('@/views/artist/c-views/hit'))
 const ArtistAlbums = lazy(() => import('@/views/artist/c-views/albums'))
@@ -137,6 +138,10 @@ const routes: RouteObject[] = [
         element: <DjRadio />
       }
     ]
+  },
+  {
+    path: 'mv',
+    element: <Mv />
   },
   {
     path: 'user',

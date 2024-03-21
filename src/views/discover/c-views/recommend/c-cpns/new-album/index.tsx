@@ -34,7 +34,7 @@ const NewAlbum: FC<IProps> = () => {
           <Carousel className="w-full h-184px ml-16px" ref={carouselRef}>
             <div className="w-full h-184px">
               <ul className="flex mt-18px">
-                {albumNewestList.slice(0, 5).map((item) => {
+                {albumNewestList?.slice(0, 5).map((item) => {
                   return (
                     <li key={item.id} className="w-118px ml-11px">
                       <a href={`#/album?id=${item.id}`}>
@@ -65,7 +65,7 @@ const NewAlbum: FC<IProps> = () => {
             </div>
             <div className="w-full h-184px">
               <ul className="flex mt-18px">
-                {albumNewestList.slice(5, 10).map((item) => {
+                {albumNewestList?.slice(5, 10).map((item) => {
                   return (
                     <li key={item.id} className="w-118px ml-11px">
                       <div

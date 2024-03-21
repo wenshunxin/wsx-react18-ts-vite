@@ -47,7 +47,7 @@ export const TableColumns = (props?: any) => {
               <PlayBtn id={record.id} fee={record.fee}></PlayBtn>
             )}
             <a href={`#/discover/player?id=${record.id}`}>{text}</a>
-            {record.mv != 0 && Mv}
+            {record.mv != 0 && Mv(record.mv)}
           </div>
         )
       }

@@ -38,6 +38,6 @@ export const CommentWrapper = styled.div`
   i.sprite_icon3 {
     width: 15px;
     height: 14px;
-    background-position: -150px 0;
+    background-position: -150px 0 !important;
   }
 `

@@ -9,8 +9,24 @@ interface IProps {
 
 const MainTable: FC<IProps> = (props) => {
   const { tracks } = props
+  console.log(tracks)
   const columns = [
-    ...TableColumns(),
+    ...TableColumns({
+      Mv: (mv: number) => {
+        return (
+          <a
+            className="u_table block"
+            href={`#/mv?id=${mv}`}
+            style={{
+              width: '23px',
+              height: '17px',
+              margin: '1px 0 0 4px',
+              backgroundPosition: ' 0 -151px'
+            }}
+          ></a>
+        )
+      }
+    }),
     {
       title: '专辑',
       width: 120,
